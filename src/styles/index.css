@@ -4,12 +4,13 @@ body {
     background-attachment: fixed;
     background-size: cover;
     opacity: 0.85;
+    font-family: "lucida handwriting";
 }
 
 .container {
-    width: 50%;
+    width: 45%;
     margin: auto;
     margin-top: 50px;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 5px 5px #888888;
 }

@@ -10,22 +10,32 @@ const Home = () => {
 	const [userInput, setUserInput] = useState("");
 	const addToList = (task) => {
 		let newTask = {label: task, isDone: false}
-		setTasks([...tasks, newTask]);
-		setUserInput("");
-	}
+			setTasks([...tasks, newTask]);
+			setUserInput("")
+		};
 	return (
 		<div className="container bg-light">
 			<div className = "text-center">
 				<h1>Task List</h1>
 			</div>
 			<div className = "text-center mb-3">
-				<input onChange = {(e) => setUserInput(e.target.value)} value = {userInput} type = "text" placeholder = "Add a task here" />
+				<input 
+					type = "text"
+					placeholder = "Add a task here"
+					onChange = {(e) => setUserInput(e.target.value)}
+					value = {userInput} 
+					onKeyDown = {(e) => {
+						if (e.key === 'Enter' || e.type ==  'Click') {
+							addToList(userInput)
+						}
+					}
+					}
+				/>
 				<button onClick = {() => addToList(userInput)}>Add to List</button>
 			</div>
-			<ul>
+			<div>
 				{tasks.map((task, index) => 
-//					<li key = {index}>{task.label}</li>
-					<div key = {index} className="form-check fs-3">
+					<div key = {index} className="form-check fs-4">
   						<input className="form-check-input" type="checkbox" value="" id="checkDefault" />
   						<label className="form-check-label" htmlFor="checkDefault">
     						{task.label}
@@ -33,8 +43,7 @@ const Home = () => {
 					</div>
 					)
 				}
-			</ul>
-			
+			</div>
 		</div>
 	);
 };
