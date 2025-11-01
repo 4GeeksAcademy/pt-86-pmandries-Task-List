@@ -13,6 +13,17 @@ const Home = () => {
 			setTasks([...tasks, newTask]);
 			setUserInput("")
 		};
+
+	const markAsDone = (index) => {
+		let updatedList = tasks.map((task, i) => {
+			if (i == index) {
+				return {label: task.label, isDone: !task.isDone}
+			}
+			else return task;
+		})
+		setTasks(updatedList)
+	}
+
 	return (
 		<div className="container bg-light">
 			<div className = "text-center">
@@ -36,8 +47,20 @@ const Home = () => {
 			<div>
 				{tasks.map((task, index) => 
 					<div key = {index} className="form-check fs-4">
-  						<input className="form-check-input" type="checkbox" value="" id="checkDefault" />
-  						<label className="form-check-label" htmlFor="checkDefault">
+  						<input 
+							className = "form-check-input" 
+							type="checkbox" 
+							value="" 
+							id="checkDefault" 
+							onChange = {
+								() => markAsDone(index)
+							}
+						/>
+  						<label 
+							className = {
+								task.isDone ? "crossedOut form-check-label": "form-check-label" 
+							}
+							htmlFor="checkDefault">
     						{task.label}
   						</label>
 					</div>

@@ -14,3 +14,7 @@ body {
     padding: 20px;
     box-shadow: 5px 5px #888888;
 }
+
+.crossedOut {
+    text-decoration: line-through;
+}
