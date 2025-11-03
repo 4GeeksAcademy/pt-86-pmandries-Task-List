@@ -18,3 +18,14 @@ body {
 .crossedOut {
     text-decoration: line-through;
 }
+
+span {
+    display: flex;
+    margin-left: 15px;
+    color: red;
+}
+
+span:hover {
+    display: flex;
+    margin-left: 15px;
+}

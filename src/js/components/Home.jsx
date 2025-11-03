@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import ReactDOM from "react-dom/client";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -20,6 +21,15 @@ const Home = () => {
 				return {label: task.label, isDone: !task.isDone}
 			}
 			else return task;
+		})
+		setTasks(updatedList)
+	}
+
+	const deleteTask = (index) => {
+		let updatedList = tasks.filter((task, i) => {
+			if (i !== index) {
+				return {label: task.label, isDone: task.isDone}
+			}
 		})
 		setTasks(updatedList)
 	}
@@ -46,9 +56,9 @@ const Home = () => {
 			</div>
 			<div>
 				{tasks.map((task, index) => 
-					<div key = {index} className="form-check fs-4">
+					<div key = {index} className="form-check fs-4 d-flex">
   						<input 
-							className = "form-check-input" 
+							className = "form-check-input me-2" 
 							type="checkbox" 
 							value="" 
 							id="checkDefault" 
@@ -63,6 +73,9 @@ const Home = () => {
 							htmlFor="checkDefault">
     						{task.label}
   						</label>
+						<span onClick = {() => deleteTask(index)}>
+							&#x2612;
+						</span>
 					</div>
 					)
 				}
