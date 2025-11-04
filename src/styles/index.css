@@ -19,13 +19,14 @@ body {
     text-decoration: line-through;
 }
 
-span {
-    display: flex;
+.form-check span {
+    visibility: hidden;
     margin-left: 15px;
     color: red;
 }
 
-span:hover {
-    display: flex;
+.form-check:hover span {
+    visibility: visible !important;
+    cursor: pointer;
     margin-left: 15px;
 }
